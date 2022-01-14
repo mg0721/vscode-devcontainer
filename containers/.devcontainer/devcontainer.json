@@ -1,48 +1,101 @@
+// https://mysterico.tistory.com/2
+// https://gitlab.com/billgrant/dev_container_example/-/blob/master/.devcontainer/Dockerfile
+
 {
-	"name": "Python 3.8",
-	"build": {
-		// Path to dockerfile
-		"dockerfile": "../docker/dev.Dockerfile",
-		"context": "..",
-		// Update 'VARIANT' to pick a Python version. Rebuild the container 
-		// if it already exists to update. Available variants: 3, 3.6, 3.7, 3.8 
-		"args": { "VARIANT": "3.8" }
-	},
+    "name": "Ubuntu",
+    "dockerComposeFile": ["./docker-compose.yml"],
+    "service": "my.ubuntu",
+    // "workspaceFolder": ".",
+    "settings": {
+        "terminal.integrated.profiles.linux": {
+            "zsh": {
+                "path": "/usr/bin/zsh",
+                "icon": "star",
+                // "env": {
+                // 	"TESTING_VAR": "abc"
+                // }
+            },
+            "bash": {
+                "path": "/bin/bash",
+                "icon": "star-full",
+                // "env": {
+                // 	"TESTING_VAR": "abc"
+                // }
+            }
 
-	// Set *default* container specific settings.json values on container create.
-	"settings": { 
-		"terminal.integrated.shell.linux": "/bin/zsh",
-		"python.pythonPath": "/usr/local/bin/python",
-		"python.linting.enabled": true,
-		"python.linting.pylintEnabled": true,
-		"python.formatting.autopep8Path": "/usr/local/bin/autopep8",
-		"python.formatting.blackPath": "/usr/local/bin/black",
-		"python.linting.banditPath": "/usr/local/bin/bandit",
-		"python.linting.flake8Path": "/usr/local/bin/flake8",
-		"python.linting.mypyPath": "/usr/local/bin/mypy",
-		"python.linting.pycodestylePath": "/usr/local/bin/pycodestyle",
-		"python.linting.pydocstylePath": "/usr/local/bin/pydocstyle",
-		"python.linting.pylintPath": "/usr/local/bin/pylint",
-		"python.testing.pytestPath": "/usr/local/bin/pytest",
-		"python.testing.pytestEnabled":true,
-	},
-
-	// Add the IDs of extensions you want installed when the container is created.
-	"extensions": [
-		"ms-python.python",
-		"eamodio.gitlens",
-		"ms-python.vscode-pylance",
-		"yzhang.markdown-all-in-one",
-		"ms-vsliveshare.vsliveshare-pack",
-		"streetsidesoftware.avro"
-	],
-
-	"postCreateCommand":"poetry config virtualenvs.create false && poetry install",
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [8080],
-	
-	// Mounted volume
-	"mounts": [
-		"source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached"
-	  ]
+        },
+        "terminal.integrated.defaultProfile.linux": "bash",
+    },
+    "extensions": [
+        // "felixfbecker.php-debug",
+        // "felixfbecker.php-intellisense",
+    ],
 }
+
+
+// {
+//     "name": "Ubuntu",
+//     "build": {
+//         // Path to dockerfile
+//         "dockerfile": "Dockerfile",
+//         "context": ".",
+//         // Update 'VARIANT' to pick a Python version. Rebuild the container
+//         // if it already exists to update. Available variants: 3, 3.6, 3.7, 3.8
+//     },
+
+//     // Set *default* container specific settings.json values on container create.
+//     "settings": {
+//         "terminal.integrated.profiles.linux": {
+//         	"zsh": {
+//         		"path": "/usr/bin/zsh",
+//         		"icon": "star",
+//         		// "env": {
+//         		// 	"TESTING_VAR": "abc"
+//         		// }
+//         	}
+//         },
+//         "terminal.integrated.defaultProfile.linux": "zsh",
+//         // "terminal.integrated.shell.linux": "/bin/zsh",
+//         // "python.pythonPath": "/usr/local/bin/python",
+//         // "python.linting.enabled": true,
+//         // "python.linting.pylintEnabled": true,
+//         // "python.formatting.autopep8Path": "/usr/local/bin/autopep8",
+//         // "python.formatting.blackPath": "/usr/local/bin/black",
+//         // "python.linting.banditPath": "/usr/local/bin/bandit",
+//         // "python.linting.flake8Path": "/usr/local/bin/flake8",
+//         // "python.linting.mypyPath": "/usr/local/bin/mypy",
+//         // "python.linting.pycodestylePath": "/usr/local/bin/pycodestyle",
+//         // "python.linting.pydocstylePath": "/usr/local/bin/pydocstyle",
+//         // "python.linting.pylintPath": "/usr/local/bin/pylint",
+//         // "python.testing.pytestPath": "/usr/local/bin/pytest",
+//         // "python.testing.pytestEnabled":true,
+//     },
+
+//     // Add the IDs of extensions you want installed when the container is created.
+//     "extensions": [
+//         // "ms-python.python",
+//         // "eamodio.gitlens",
+//         // "ms-python.vscode-pylance",
+//         // "yzhang.markdown-all-in-one",
+//         // "ms-vsliveshare.vsliveshare-pack",
+//         // "streetsidesoftware.avro"
+//     ],
+
+//     // "postCreateCommand":"poetry config virtualenvs.create false && poetry install",
+//     // Use 'forwardPorts' to make a list of ports inside the container available locally.
+//     // "forwardPorts": [8080],
+
+
+//     // Mounted volume
+//     "mounts": [
+//         // "source=profile,target=/root,type=volume",
+//         // "target=/root/.vscode-server,type=volume",
+//         // "source=/etc/passwd,target=/etc/passwd,type=bind,consistency=cached",
+//     ],
+//         // "source=${localEnv:HOME}/.ssh,target=${localEnv:HOME}/.ssh,type=bind,consistency=cached",
+//         // "source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached",
+
+
+//     "remoteUser": "mgkim",
+
+// }
