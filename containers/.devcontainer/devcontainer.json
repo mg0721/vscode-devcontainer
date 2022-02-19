@@ -5,6 +5,7 @@
     "name": "Ubuntu",
     "dockerComposeFile": ["./docker-compose.yml"],
     "service": "my.ubuntu",
+    "workspaceFolder": "/",
     "settings": {
         "terminal.integrated.profiles.linux": {
             "zsh": {

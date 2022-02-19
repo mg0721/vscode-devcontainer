@@ -13,7 +13,7 @@ ARG USERNAME
 ARG USER_UID
 ARG USER_GID
 
-ENV SHELL /bin/bash
+ENV SHELL zsh
 
 COPY asset/sources.list.20.04 /etc/apt/sources.list
 
